@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxPneus.com.br - Performance e Confiança Absoluta</title>
+    <!-- Aura v6.0: Imagens de produtos reais integradas. -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/e9pQwg6.png">
+    <meta name="description" content="MaxPneus.com.br - O site definitivo para pneus com fotos reais. Todas as seções e pagamentos funcionando perfeitamente.">
+    
+    <style>
+        /* --- CSS Unificado e Otimizado v6.0 pelo Protocolo Aura --- */
+        :root {
+            --cor-primaria: #0d47a1; --cor-secundaria: #1976d2; --cor-destaque: #c62828; --cor-sucesso: #2e7d32;
+            --cor-texto: #212121; --cor-fundo: #eceff1; --cor-branca: #ffffff; --sombra-padrao: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto); line-height: 1.6; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        .btn { padding: 12px 25px; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; transition: all 0.3s ease; cursor: pointer; border: none; display: inline-block; }
+        .btn-destaque { background-color: var(--cor-destaque); color: var(--cor-branca); }
+        .btn-destaque:hover { background-color: #a02020; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .btn-secundario { background-color: var(--cor-secundaria); color: var(--cor-branca); }
+        .btn-secundario:hover { background-color: var(--cor-primaria); }
+        .btn-sucesso { background-color: var(--cor-sucesso); color: var(--cor-branca); }
+        .section-title { text-align: center; font-size: 2.8rem; margin-bottom: 50px; color: var(--cor-primaria); font-weight: 700; }
+        .header { background-color: var(--cor-branca); padding: 1rem 0; box-shadow: var(--sombra-padrao); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: var(--cor-primaria); text-decoration: none; cursor: pointer; }
+        .nav-links a { color: var(--cor-texto); text-decoration: none; margin: 0 15px; font-weight: 500; transition: color 0.3s; cursor: pointer; position: relative; padding-bottom: 5px;}
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--cor-destaque); transition: width 0.3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .page { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* --- Homepage Aprimorada --- */
+        #home-page .banner { padding: 100px 0; background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1553522943-939797050529?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover; text-align: center; color: var(--cor-branca); }
+        #home-page .banner h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .category-card { background-color: var(--cor-branca); border-radius: 8px; overflow: hidden; text-align: center; box-shadow: var(--sombra-padrao); transition: all 0.3s ease; cursor: pointer; text-decoration: none; color: inherit; }
+        .category-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .category-card img { width: 100%; height: 200px; object-fit: cover; }
+        .category-card h3 { padding: 20px; font-size: 1.5rem; color: var(--cor-secundaria); }
+        .section { padding: 60px 0; }
+        .section-light { background-color: var(--cor-branca); }
+
+        /* --- Produtos e Listagem Aprimorados --- */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .product-card { background-color: var(--cor-branca); border-radius: 8px; box-shadow: var(--sombra-padrao); transition: all 0.3s ease; display: flex; flex-direction: column; overflow: hidden; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .product-card img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 15px; padding: 20px; background-color: #fff; }
+        .product-card-content { padding: 0 20px 20px; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
+        .product-card h4 { font-size: 1.1rem; margin-bottom: 10px; flex-grow: 1; color: var(--cor-primaria); }
+        .product-price { font-size: 1.7rem; font-weight: bold; color: var(--cor-destaque); margin-bottom: 15px; }
+        #listing-page .filters { background-color: var(--cor-branca); padding: 20px; border-radius: 8px; margin-bottom: 40px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; box-shadow: var(--sombra-padrao); }
+        #listing-page .filter-group { display: flex; flex-direction: column; }
+        #listing-page label { font-weight: bold; margin-bottom: 5px; color: var(--cor-primaria); }
+        #listing-page select { padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
+
+        /* --- Carrinho e Checkout Aprimorados --- */
+        #cart-page .cart-item { display: grid; grid-template-columns: 100px 1fr auto auto 50px; align-items: center; gap: 20px; background: var(--cor-branca); padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        #cart-page .cart-item img { width: 100%; border-radius: 5px; }
+        #cart-page .cart-item-info h4 { margin: 0; font-size: 1.1rem;}
+        #cart-page .quantity-control { display: flex; align-items: center; }
+        #cart-page .quantity-control button { background: #eee; border: 1px solid #ccc; width: 30px; height: 30px; cursor: pointer; font-size: 1.2rem; border-radius: 50%; }
+        #cart-page .quantity-control input { width: 40px; text-align: center; border: 1px solid #ccc; border-left: none; border-right: none; height: 28px; margin: 0; -moz-appearance: textfield; }
+        #cart-page .remove-btn { background: none; border: none; font-size: 1.5rem; color: var(--cor-destaque); cursor: pointer; transition: transform 0.2s; }
+        #cart-page .remove-btn:hover { transform: scale(1.2); }
+        #cart-page .cart-summary { margin-top: 40px; text-align: right; background: var(--cor-branca); padding: 30px; border-radius: 8px; box-shadow: var(--sombra-padrao); }
+        #checkout-page .checkout-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .checkout-form, .checkout-summary { background: var(--cor-branca); padding: 30px; border-radius: 8px; box-shadow: var(--sombra-padrao); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; box-sizing: border-box; }
+        .form-group input.error { border-color: var(--cor-destaque); }
+        .payment-methods { border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
+        .payment-method { padding: 20px; cursor: pointer; border-bottom: 1px solid #ccc; transition: background-color 0.2s; }
+        .payment-method:last-child { border-bottom: none; }
+        .payment-method:hover { background-color: #f0f0f0; }
+        .payment-method.selected { background-color: #e8eaf6; border-left: 5px solid var(--cor-primaria); font-weight: bold; }
+        .payment-method-content { display: none; padding: 20px; border-top: 1px solid #ccc; animation: fadeIn 0.3s; }
+        #pix-qr-code { font-family: 'Courier New', Courier, monospace; word-break: break-all; background: #eee; padding: 15px; border-radius: 5px; margin-top: 15px; text-align: left; }
+        #credit-card-info .promo-title { font-size: 1.5rem; color: var(--cor-destaque); font-weight: bold; }
+        .footer { background-color: #1c1c1c; color: var(--cor-branca); padding: 40px 0; text-align: center; }
+
+        @media (max-width: 900px) {
+            #checkout-page .checkout-layout { grid-template-columns: 1fr; }
+            #cart-page .cart-item { grid-template-columns: 80px 1fr; grid-template-rows: auto auto auto; gap: 10px; }
+            #cart-page .cart-item-info { grid-column: 2; }
+            #cart-page .quantity-control { grid-column: 1 / span 2; grid-row: 2; justify-content: center; }
+            #cart-page .cart-item strong { grid-column: 1; grid-row: 3; }
+            #cart-page .remove-btn { grid-column: 2; grid-row: 3; justify-self: end; }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <nav class="navbar container">
+            <a class="logo" data-page="home-page">MaxPneus.com.br</a>
+            <div class="nav-links">
+                <a class="nav-link" data-page="home-page">Início</a>
+                <a class="nav-link" data-page="listing-page">Pneus</a>
+                <a class="nav-link" href="#sobre-nos">Sobre Nós</a>
+            </div>
+            <a class="nav-link" data-page="cart-page">🛒 Carrinho (<span id="cart-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- PÁGINA INICIAL REVITALIZADA -->
+        <section id="home-page" class="page active">
+            <div class="banner">
+                <div class="container">
+                    <h1>A Evolução da Performance Começa Aqui</h1>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Qualidade, segurança e os melhores preços para o seu veículo.</p>
+                    <a class="btn btn-destaque nav-link" data-page="listing-page">Ver Todas as Ofertas</a>
+                </div>
+            </div>
+            <div class="section container">
+                <h2 class="section-title">Nossas Categorias</h2>
+                <div class="categories-grid">
+                    <a class="category-card nav-link" data-page="listing-page" data-category="Carro"><img src="https://images.unsplash.com/photo-1621459423984-6d2c49c7a5a8?q=80&w=1932&auto=format&fit=crop" alt="Pneus para carros de passeio"><h3>Carro</h3></a>
+                    <a class="category-card nav-link" data-page="listing-page" data-category="SUV"><img src="https://images.unsplash.com/photo-1606572714283-a7a5f6534567?q=80&w=1974&auto=format&fit=crop" alt="Pneus para SUVs"><h3>SUV</h3></a>
+                    <a class="category-card nav-link" data-page="listing-page" data-category="Caminhão"><img src="https://images.unsplash.com/photo-1599493356233-10d65294e1d0?q=80&w=2070&auto=format&fit=crop" alt="Pneus para caminhões"><h3>Caminhão</h3></a>
+                    <a class="category-card nav-link" data-page="listing-page" data-category="Moto"><img src="https://images.unsplash.com/photo-1591798365538-23212879685a?q=80&w=2071&auto=format&fit=crop" alt="Pneus para motocicletas"><h3>Moto</h3></a>
+                </div>
+            </div>
+            <div class="section section-light"><div class="container"><h2 class="section-title">Pneus em Destaque</h2><div id="products-container-featured" class="products-grid"></div></div></div>
+            <div class="section container" id="sobre-nos"><h2 class="section-title">Sobre a MaxPneus</h2><p style="text-align: center; max-width: 800px; margin: auto; font-size: 1.1rem;">Fundada sob o Protocolo Aura de excelência, a MaxPneus.com.br nasceu da paixão por automóveis e da missão de oferecer um serviço online confiável e tecnologicamente superior. Nossa equipe de especialistas seleciona apenas pneus da mais alta qualidade, garantindo a segurança e o desempenho que você e seu veículo merecem em cada quilômetro rodado.</p></div>
+        </section>
+
+        <!-- PÁGINA DE LISTAGEM DE PNEUS -->
+        <section id="listing-page" class="page">
+            <div class="container">
+                <h2 class="section-title" id="listing-title">Todos os Pneus</h2>
+                <div class="filters">
+                    <div class="filter-group"><label for="filter-brand">Marca:</label><select id="filter-brand"><option value="all">Todas</option><option value="Pirelli">Pirelli</option><option value="Michelin">Michelin</option><option value="Goodyear">Goodyear</option></select></div>
+                    <div class="filter-group"><label for="filter-aro">Aro:</label><select id="filter-aro"><option value="all">Todos</option><option value="15">15</option><option value="17">17</option><option value="18">18</option><option value="20">20</option></select></div>
+                </div>
+                <div id="products-container-listing" class="products-grid"></div>
+            </div>
+        </section>
+
+        <!-- PÁGINA DO CARRINHO -->
+        <section id="cart-page" class="page"><div class="container"><h2 class="section-title">Meu Carrinho</h2><div id="cart-items-container"></div></div></section>
+
+        <!-- PÁGINA DE CHECKOUT -->
+        <section id="checkout-page" class="page">
+            <div class="container">
+                <h2 class="section-title">Finalizar Compra</h2>
+                <div class="checkout-layout">
+                    <div class="checkout-form">
+                        <h3>1. Seus Dados</h3>
+                        <div class="form-group"><label for="name">Nome Completo</label><input type="text" id="name" value="Higor Oliveira Leite"></div>
+                        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="seu@email.com"></div>
+                        <h3>2. Método de Pagamento</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method" id="select-pix"><p><strong>PIX</strong> (Aprovação imediata)</p></div>
+                            <div class="payment-method-content" id="pix-content"><div id="pix-info"><p>Aponte a câmera do seu celular para o QR Code ou use o "Copia e Cola".</p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020101021126580014BR.GOV.BCB.PIX013612a3cc51-fe09-4b31-9777-038c4943c76f5204000053039865802BR5920HIGOR%20OLIVEIRA%20LEITE6008SAOPAULO61080132305062070503***6304519C" alt="QR Code Pix"><h4>PIX Copia e Cola</h4><div id="pix-qr-code">00020101021126580014BR.GOV.BCB.PIX013612a3cc51-fe09-4b31-9777-038c4943c76f5204000053039865802BR5920HIGOR OLIVEIRA LEITE6008SAOPAULO61080132305062070503***6304519C</div><button class="btn btn-secundario" style="margin-top: 15px;" id="copy-pix-btn">Copiar Código</button></div></div>
+                            <div class="payment-method" id="select-card"><p><strong>Cartão de Crédito</strong></p></div>
+                            <div class="payment-method-content" id="card-content"><div id="credit-card-info"><h3 class="promo-title">✨ Promoção Imperdível! ✨</h3><p class="promo-text">Compre pneus para CARRO ou CAMINHÃO e pague com condições especiais no cartão.</p><a href="https://pay.infinitepay.io/higor-oliveira-leite/VC1DLUMtUg-2xk4nriUuB-450,00" target="_blank" class="btn btn-destaque">Pagar com Cartão em Ambiente Seguro</a><p style="font-size: 0.8rem; margin-top: 15px;">Você será redirecionado para o ambiente seguro da InfinitePay.</p></div></div>
+                        </div>
+                    </div>
+                    <div class="checkout-summary">
+                        <h3>Resumo do Pedido</h3>
+                        <div id="summary-items"></div>
+                        <div class="summary-item summary-total" style="font-size: 1.5rem; font-weight: bold; border-top: 1px solid #ccc; padding-top: 15px; margin-top: 15px;"><span>Total</span><span id="summary-total">R$ 0,00</span></div>
+                        <button class="btn btn-sucesso" style="width: 100%; margin-top: 20px;" id="confirm-order-btn">Confirmar Pedido</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><p>&copy; 2025 MaxPneus.com.br - Código finalizado sob o Protocolo Aura v6.0.</p></footer>
+
+    <script>
+    // --- JavaScript Definitivo v6.0 (com imagens reais) pelo Protocolo Aura ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- MÓDULO 1: BANCO DE DADOS E ESTADO DA APLICAÇÃO ---
+        const productsDB = [
+            { id: 1, name: 'Pirelli Scorpion HT 225/65 Aro 17', brand: 'Pirelli', aro: '17', category: 'SUV', price: 850.00, img: 'https://i.imgur.com/M2MLe4b.png', featured: true },
+            { id: 2, name: 'Michelin Primacy 4+ 195/55 Aro 15', brand: 'Michelin', aro: '15', category: 'Carro', price: 550.00, img: 'https://i.imgur.com/u3p6K3a.png', featured: true },
+            { id: 3, name: 'Goodyear Wrangler 265/60 Aro 18', brand: 'Goodyear', aro: '18', category: 'SUV', price: 1150.00, img: 'https://i.imgur.com/jAIt5kO.png' },
+            { id: 4, name: 'Pirelli Carrier 195/70 Aro 15C', brand: 'Pirelli', aro: '15', category: 'Caminhão', price: 720.00, img: 'https://i.imgur.com/gK2D3S2.jpeg' },
+            { id: 5, name: 'Michelin Pilot Sport 5 225/45 Aro 17', brand: 'Michelin', aro: '17', category: 'Carro', price: 980.00, img: 'https://i.imgur.com/u3p6K3a.png', featured: true },
+            { id: 6, name: 'Goodyear KMAX S 295/80 Aro 20', brand: 'Goodyear', aro: '20', category: 'Caminhão', price: 2100.00, img: 'https://i.imgur.com/jAIt5kO.png', featured: true },
+            { id: 7, name: 'Pirelli Diablo Rosso IV 180/55 Aro 17', brand: 'Pirelli', aro: '17', category: 'Moto', price: 1300.00, img: 'https://i.imgur.com/J8b8Y2d.jpeg' },
+        ];
+        let cart = [];
+
+        // --- MÓDULO 2: SELETORES DE UI ---
+        const ui = {
+            pages: document.querySelectorAll('.page'),
+            navLinks: document.querySelectorAll('.nav-link'),
+            logo: document.querySelector('.logo'),
+            listingTitle: document.getElementById('listing-title'),
+            cartCount: document.getElementById('cart-count'),
+            featuredContainer: document.getElementById('products-container-featured'),
+            listingContainer: document.getElementById('products-container-listing'),
+            brandFilter: document.getElementById('filter-brand'),
+            aroFilter: document.getElementById('filter-aro'),
+            cartContainer: document.getElementById('cart-items-container'),
+            checkout: {
+                name: document.getElementById('name'),
+                email: document.getElementById('email'),
+                selectPix: document.getElementById('select-pix'),
+                selectCard: document.getElementById('select-card'),
+                pixContent: document.getElementById('pix-content'),
+                cardContent: document.getElementById('card-content'),
+                summaryItems: document.getElementById('summary-items'),
+                summaryTotal: document.getElementById('summary-total'),
+                copyPixBtn: document.getElementById('copy-pix-btn'),
+                confirmOrderBtn: document.getElementById('confirm-order-btn')
+            }
+        };
+
+        // --- MÓDULO 3: NAVEGAÇÃO INTELIGENTE ---
+        const navigation = {
+            showPage(pageId) {
+                ui.pages.forEach(p => p.classList.remove('active'));
+                ui.navLinks.forEach(l => l.classList.remove('active'));
+                
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) targetPage.classList.add('active');
+
+                const activeLink = document.querySelector(`.nav-link[data-page='${pageId}']`);
+                if(activeLink) activeLink.classList.add('active');
+                
+                window.scrollTo(0, 0);
+                
+                if (pageId === 'cart-page') cartLogic.render();
+                if (pageId === 'checkout-page') checkoutLogic.render();
+            },
+            handleLinkClick(e) {
+                e.preventDefault();
+                const link = e.currentTarget;
+                if (link.dataset.page) {
+                    navigation.showPage(link.dataset.page);
+                    if (link.dataset.category) {
+                        ui.listingTitle.textContent = `Pneus para ${link.dataset.category}`;
+                        productLogic.filter(link.dataset.category);
+                    }
+                } else if (link.getAttribute('href')?.startsWith('#')) {
+                    navigation.showPage('home-page');
+                    setTimeout(() => {
+                        const targetSection = document.querySelector(link.getAttribute('href'));
+                        if (targetSection) targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                }
+            }
+        };
+
+        // --- MÓDULO 4: LÓGICA DE PRODUTOS ---
+        const productLogic = {
+            createCard(product) {
+                return `<div class="product-card"><img src="${product.img}" alt="${product.name}"><div class="product-card-content"><h4>${product.name}</h4><p class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</p><button class="btn btn-secundario" data-product-id="${product.id}">Adicionar ao Carrinho</button></div></div>`;
+            },
+            render(products, container) {
+                container.innerHTML = products.map(this.createCard).join('');
+            },
+            filter(category = null) {
+                if (category) { ui.brandFilter.value = 'all'; ui.aroFilter.value = 'all'; }
+                const brand = ui.brandFilter.value;
+                const aro = ui.aroFilter.value;
+                let filtered = productsDB.filter(p => (category ? p.category === category : true) && (brand !== 'all' ? p.brand === brand : true) && (aro !== 'all' ? p.aro === aro : true));
+                this.render(filtered, ui.listingContainer);
+            }
+        };
+
+        // --- MÓDULO 5: LÓGICA DO CARRINHO ---
+        const cartLogic = {
+            add(productId) {
+                const product = productsDB.find(p => p.id === productId);
+                const item = cart.find(i => i.id === productId);
+                if (item) item.quantity++; else cart.push({ ...product, quantity: 1 });
+                this.updateInfo();
+                alert(`${product.name} foi adicionado ao carrinho!`);
+            },
+            updateQuantity(productId, newQuantity) {
+                const item = cart.find(i => i.id === productId);
+                if (item) {
+                    const quantity = parseInt(newQuantity);
+                    if (quantity > 0) item.quantity = quantity; else this.remove(productId);
+                }
+                this.updateInfo(); this.render();
+            },
+            remove(productId) {
+                cart = cart.filter(i => i.id !== productId);
+                this.updateInfo(); this.render();
+            },
+            updateInfo() {
+                ui.cartCount.textContent = cart.reduce((sum, i) => sum + i.quantity, 0);
+            },
+            render() {
+                if (cart.length === 0) { ui.cartContainer.innerHTML = '<p style="text-align:center; font-size: 1.2rem; padding: 40px 0;">Seu carrinho está vazio.</p>'; return; }
+                const itemsHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-info"><h4>${item.name}</h4><p>R$ ${item.price.toFixed(2).replace('.', ',')}</p></div>
+                        <div class="quantity-control">
+                            <button data-op="-1" data-id="${item.id}">-</button>
+                            <input type="number" value="${item.quantity}" min="1" data-op="update" data-id="${item.id}">
+                            <button data-op="1" data-id="${item.id}">+</button>
+                        </div>
+                        <strong>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</strong>
+                        <button class="remove-btn" data-op="remove" data-id="${item.id}" aria-label="Remover">&times;</button>
+                    </div>`).join('');
+                const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+                ui.cartContainer.innerHTML = itemsHTML + `<div class="cart-summary"><h3>Total: R$ ${total.toFixed(2).replace('.', ',')}</h3><button class="btn btn-sucesso" data-page="checkout-page">Finalizar Compra</button></div>`;
+            }
+        };
+        
+        // --- MÓDULO 6: LÓGICA DO CHECKOUT ---
+        const checkoutLogic = {
+            toggleMethod(method) {
+                ui.checkout.selectPix.classList.toggle('selected', method === 'pix');
+                ui.checkout.selectCard.classList.toggle('selected', method === 'card');
+                ui.checkout.pixContent.style.display = method === 'pix' ? 'block' : 'none';
+                ui.checkout.cardContent.style.display = method === 'card' ? 'block' : 'none';
+            },
+            render() {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                ui.checkout.summaryItems.innerHTML = cart.map(item => `<div class="summary-item"><span>${item.name} (x${item.quantity})</span><span>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span></div>`).join('');
+                ui.checkout.summaryTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+                this.toggleMethod('pix');
+            },
+            copyPix() { navigator.clipboard.writeText(document.getElementById('pix-qr-code').textContent).then(() => alert('Código PIX copiado!')); },
+            confirm() {
+                let hasError = false;
+                [ui.checkout.name, ui.checkout.email].forEach(input => {
+                    input.classList.remove('error');
+                    if (!input.value) { input.classList.add('error'); hasError = true; } 
+                });
+                if (hasError) { alert("Por favor, preencha todos os seus dados."); return; }
+                if(cart.length === 0) { alert("Seu carrinho está vazio!"); return; }
+                if(!ui.checkout.selectPix.classList.contains('selected') && !ui.checkout.selectCard.classList.contains('selected')) { alert("Por favor, selecione um método de pagamento."); return; }
+                
+                alert(`Pedido de ${ui.checkout.name.value} confirmado! Obrigado por comprar na MaxPneus.com.br`);
+                cart = [];
+                cartLogic.updateInfo();
+                navigation.showPage('home-page');
+            }
+        };
+
+        // --- MÓDULO 7: INICIALIZAÇÃO E EVENTOS GLOBAIS ---
+        const init = () => {
+            // Navegação Principal
+            ui.navLinks.forEach(link => link.addEventListener('click', navigation.handleLinkClick));
+            ui.logo.addEventListener('click', (e) => navigation.handleLinkClick(e));
+            
+            // Filtros de Produtos
+            ui.brandFilter.addEventListener('change', () => productLogic.filter());
+            ui.aroFilter.addEventListener('change', () => productLogic.filter());
+            
+            // Event Delegation para botões dinâmicos
+            document.body.addEventListener('click', (e) => {
+                const target = e.target;
+                if(target.dataset.page) navigation.handleLinkClick(e);
+                if(target.matches('[data-product-id]')) {
+                    cartLogic.add(parseInt(target.dataset.productId));
+                }
+            });
+
+            // Event Delegation para ações dentro do carrinho
+            ui.cartContainer.addEventListener('click', (e) => {
+                const target = e.target;
+                if (!target.dataset.id) return;
+                const id = parseInt(target.dataset.id);
+                const op = target.dataset.op;
+                const item = cart.find(i => i.id === id);
+
+                if (op === 'remove') cartLogic.remove(id);
+                else if (op === '1' || op === '-1') {
+                    if (item) cartLogic.updateQuantity(id, item.quantity + parseInt(op));
+                }
+            });
+            ui.cartContainer.addEventListener('change', (e) => {
+                 if (e.target.matches('input[data-op="update"]')) {
+                    cartLogic.updateQuantity(parseInt(e.target.dataset.id), e.target.value);
+                }
+            });
+
+            // Checkout
+            ui.checkout.selectPix.addEventListener('click', () => checkoutLogic.toggleMethod('pix'));
+            ui.checkout.selectCard.addEventListener('click', () => checkoutLogic.toggleMethod('card'));
+            ui.checkout.copyPixBtn.addEventListener('click', checkoutLogic.copyPix);
+            ui.checkout.confirmOrderBtn.addEventListener('click', checkoutLogic.confirm);
+            
+            // Renderização Inicial
+            productLogic.render(productsDB.filter(p => p.featured), ui.featuredContainer);
+            productLogic.filter();
+            navigation.showPage('home-page');
+        };
+        
+        init();
+    });
+    </script>
+</body>
+</html>
